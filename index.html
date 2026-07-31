@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#73207c" />
+    <title>罗伟教授课题组 - 深圳理工大学材料学院</title>
+    <meta name="description" content="深圳理工大学材料学院罗伟教授课题组官方网站，聚焦新能源材料、纳米功能材料与智能材料研究。" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔬%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <a href="#main-content" class="skip-link">跳到主要内容</a>
+
+    <!-- ═══ 导航栏 ═══ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="https://msee.suat-sz.edu.cn/" target="_blank" rel="noopener noreferrer" class="logo-link" aria-label="材料科学与能源工程学院官网">
+                    <img src="logo.png" alt="材料科学与能源工程学院" class="logo-img" width="160" height="45" />
+                </a>
+                <a href="#home" class="logo-text" data-zh="罗伟课题组" data-en="Luo Wei Group">罗伟课题组</a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-item" data-zh="首页" data-en="Home">首页</a>
+                <a href="#research" class="nav-item" data-zh="研究内容" data-en="Research">研究内容</a>
+                <a href="#publications" class="nav-item" data-zh="团队介绍" data-en="Team">团队介绍</a>
+                <a href="#contact" class="nav-item" data-zh="联系方式" data-en="Contact">联系方式</a>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-trigger" id="langTrigger" aria-label="切换语言" aria-expanded="false">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="currentColor" d="M27.85 29H30l-6-15h-2.35l-6 15h2.15l1.6-4h6.85zm-7.65-6 2.62-6.56L25.45 23zM18 7V5h-7V2H9v3H2v2h10.74a14.7 14.7 0 0 1-3.19 6.18A13.5 13.5 0 0 1 7.26 9h-2.1a16.5 16.5 0 0 0 3 5.58A16.8 16.8 0 0 1 3 18l.75 1.86A18.5 18.5 0 0 0 9.53 16a16.9 16.9 0 0 0 5.76 3.84L16 18a14.5 14.5 0 0 1-5.12-3.37A17.64 17.64 0 0 0 14.8 7z"/>
+                        </svg>
+                        <svg class="caret" viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="currentColor" d="M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z"/>
+                        </svg>
+                    </button>
+                    <div class="lang-menu" id="langMenu" role="menu">
+                        <button class="lang-option active" data-lang="zh" role="menuitem">简体中文</button>
+                        <button class="lang-option" data-lang="en" role="menuitem">English</button>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="打开菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main-content">
+    <!-- ═══ Hero 区域 ═══ -->
+    <section class="hero" id="home">
+        <canvas id="particleCanvas" class="particle-canvas"></canvas>
+        <div class="hero-content hero-split">
+            <div class="hero-main">
+                <p class="hero-label" data-zh="深圳理工大学 · 材料科学与能源工程学院" data-en="Shenzhen University of Advanced Technology · School of Materials Science and Energy Engineering">深圳理工大学 · 材料科学与能源工程学院</p>
+                <h1 class="hero-title" data-zh="用计算与机器学习，探索材料的微观世界" data-en="Exploring Materials through Computation and Machine Learning">用计算与机器学习，探索材料的微观世界</h1>
+                <p class="hero-subtitle" data-zh="罗伟课题组 · 深圳理工大学材料科学与能源工程学院" data-en="Luo Wei Group · School of Materials Science and Energy Engineering, SUAT">罗伟课题组 · 深圳理工大学材料科学与能源工程学院</p>
+                <div class="hero-positions">
+                    <span class="position-tag position-tag-accent" data-zh="博士后 2 名" data-en="Postdocs: 2">博士后 2 名</span>
+                    <span class="position-tag" data-zh="博士 / 硕士 2-3 名" data-en="PhD / Master's: 2-3">博士 / 硕士 2-3 名</span>
+                    <span class="position-tag" data-zh="科研助理 1 名" data-en="Research Assistant: 1">科研助理 1 名</span>
+                </div>
+            </div>
+            <aside class="hero-intro-card">
+                <h2 class="hero-intro-title" data-zh="导师简介" data-en="Supervisor Profile">导师简介</h2>
+                <p class="hero-intro-summary" data-zh="罗伟，深圳理工大学材料科学与能源工程学院教研助理教授、独立 PI、博士生导师，长期结合第一性原理计算与机器学习方法，研究铁电/多铁与拓扑量子材料。" data-en="Wei Luo is an assistant professor, independent PI, and PhD supervisor at SUAT, combining first-principles calculations with machine learning to study ferroic/multiferroic and topological quantum materials.">罗伟，深圳理工大学材料科学与能源工程学院教研助理教授、独立 PI、博士生导师，长期结合第一性原理计算与机器学习方法，研究铁电/多铁与拓扑量子材料。</p>
+                <a href="#about" class="hero-intro-link" data-zh="查看完整简介 ↓" data-en="Full profile ↓">查看完整简介 ↓</a>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ═══ 导师简介（完整版） ═══ -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-photo">
+                    <img src="https://msee.suat-sz.edu.cn/__local/2/41/99/154E41BE5000E348FDD0DBFCEBC_81A6F9F3_219C9.jpg" alt="罗伟 / Wei Luo" class="about-photo-img" loading="lazy" />
+                </div>
+                <div class="about-text">
+                    <h2 class="about-title" data-zh="导师简介" data-en="Supervisor Profile">导师简介</h2>
+                    <div class="about-subtitle" data-zh="独立 PI · 博士生导师" data-en="Independent PI · PhD Supervisor">独立 PI · 博士生导师</div>
+                    <p data-zh="罗伟，深圳理工大学材料科学与能源工程学院教研助理教授（特聘副教授）、独立 PI、博士生导师。博士毕业于复旦大学凝聚态物理专业，曾在美国田纳西大学、橡树岭国家实验室、阿肯色大学从事博士后研究。博士后合作导师为美国阿肯色大学 Laurent Bellaiche 教授，系国际知名的凝聚态物理学家。" data-en="Wei Luo is an assistant professor (distinguished associate professor), independent PI, and PhD supervisor at the School of Materials Science and Energy Engineering, Shenzhen University of Advanced Technology. He earned his PhD in condensed matter physics from Fudan University, then conducted postdoctoral research at the University of Tennessee, Oak Ridge National Laboratory, and the University of Arkansas. His postdoctoral co-advisor was Prof. Laurent Bellaiche at the University of Arkansas, an internationally renowned condensed matter physicist.">罗伟，深圳理工大学材料科学与能源工程学院教研助理教授（特聘副教授）、独立 PI、博士生导师。博士毕业于复旦大学凝聚态物理专业，曾在美国田纳西大学、橡树岭国家实验室、阿肯色大学从事博士后研究。博士后合作导师为美国阿肯色大学 Laurent Bellaiche 教授，系国际知名的凝聚态物理学家。</p>
+                    <p data-zh="长期结合第一性原理计算与机器学习方法，研究铁电/多铁材料、拓扑量子材料的结构、物性与功能调控。以第一作者（含共一）/通讯作者（含共通）发表 SCI 论文 15 篇以上，成果发表于 Nat. Commun.、J. Am. Chem. Soc.、Angew. Chem.、Adv. Mater.、Phys. Rev. B、Nano Lett.、npj Comput. Mater. 等；Google Scholar 总引用约 980 次。" data-en="He combines first-principles calculations with machine learning to study ferroic/multiferroic and topological quantum materials. He has published 15+ SCI papers as first or corresponding author in Nat. Commun., J. Am. Chem. Soc., Angew. Chem., Adv. Mater., Phys. Rev. B, Nano Lett., and npj Comput. Mater., with ~980 Google Scholar citations.">长期结合第一性原理计算与机器学习方法，研究铁电/多铁材料、拓扑量子材料的结构、物性与功能调控。以第一作者（含共一）/通讯作者（含共通）发表 SCI 论文 15 篇以上，成果发表于 Nat. Commun.、J. Am. Chem. Soc.、Angew. Chem.、Adv. Mater.、Phys. Rev. B、Nano Lett.、npj Comput. Mater. 等；Google Scholar 总引用约 980 次。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ 研究内容 ═══ -->
+    <section class="section research" id="research">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-zh="研究内容" data-en="Research Content">研究内容</h2>
+                <p class="section-desc" data-zh="凝聚态物理与计算材料学的交叉前沿" data-en="At the intersection of condensed matter physics and computational materials science">凝聚态物理与计算材料学的交叉前沿</p>
+            </div>
+            <div class="research-grid">
+                <a href="#representative-publications" class="research-card research-card-bg research-card-bg-fp" data-aos="fade-up">
+                    <div class="research-card-overlay"></div>
+                    <div class="research-card-content">
+                        <div class="research-icon" aria-hidden="true">⚡</div>
+                        <h3 data-zh="第一性原理计算" data-en="First-Principles Calculations">第一性原理计算</h3>
+                        <p data-zh="研究铁电、多铁与拓扑材料的结构稳定性、电子结构、相变机理与功能性质预测，理解材料物性的微观起源。" data-en="We study the structural stability, electronic structure, phase-transition mechanisms, and functional properties of ferroic, multiferroic, and topological materials to understand the microscopic origins of their behavior.">研究铁电、多铁与拓扑材料的结构稳定性、电子结构、相变机理与功能性质预测，理解材料物性的微观起源。</p>
+                        <span class="card-link" data-zh="点击了解更多 →" data-en="Learn more →">点击了解更多 →</span>
+                    </div>
+                </a>
+                <a href="#representative-publications" class="research-card research-card-bg research-card-bg-ml" data-aos="fade-up" data-aos-delay="100">
+                    <div class="research-card-overlay"></div>
+                    <div class="research-card-content">
+                        <div class="research-icon" aria-hidden="true">🌀</div>
+                        <h3 data-zh="机器学习材料模拟" data-en="Machine-Learning Materials Simulation">机器学习材料模拟</h3>
+                        <p data-zh="面向复杂材料体系建立高精度、高效率的机器学习模拟方法，连接量子尺度计算与大尺度动力学模拟。" data-en="We develop high-precision, efficient machine-learning simulation methods for complex materials, bridging quantum-scale calculations and large-scale dynamics.">面向复杂材料体系建立高精度、高效率的机器学习模拟方法，连接量子尺度计算与大尺度动力学模拟。</p>
+                        <span class="card-link" data-zh="点击了解更多 →" data-en="Learn more →">点击了解更多 →</span>
+                    </div>
+                </a>
+                <a href="#representative-publications" class="research-card research-card-bg research-card-bg-ai" data-aos="fade-up" data-aos-delay="200">
+                    <div class="research-card-overlay"></div>
+                    <div class="research-card-content">
+                        <div class="research-icon" aria-hidden="true">🤖</div>
+                        <h3 data-zh="数据驱动材料设计" data-en="Data-Driven Materials Design">数据驱动材料设计</h3>
+                        <p data-zh="结合物理图像、计算模拟与 AI 工具，探索可发表、可拓展、可持续推进的前沿材料课题。" data-en="We combine physical intuition, computational modeling, and AI tools to explore frontier materials problems that are publishable, extensible, and sustainable.">结合物理图像、计算模拟与 AI 工具，探索可发表、可拓展、可持续推进的前沿材料课题。</p>
+                        <span class="card-link" data-zh="点击了解更多 →" data-en="Learn more →">点击了解更多 →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ 代表成果 ═══ -->
+    <section class="section publications-preview" id="representative-publications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-zh="代表成果" data-en="Representative Publications">代表成果</h2>
+                <p class="section-desc" data-zh="课题组近期代表性研究论文" data-en="Recent representative publications from our group">课题组近期代表性研究论文</p>
+            </div>
+
+            <div class="publication-list" id="publicationList" data-preview="true">
+                <!-- 论文列表由 JavaScript 动态渲染 -->
+            </div>
+            <div class="view-all-wrapper">
+                <a href="publications.html" class="view-all-link" data-zh="查看全部成果 →" data-en="View all publications →">查看全部成果 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ 团队介绍 ═══ -->
+    <section class="section team" id="publications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-zh="团队介绍" data-en="Team">团队介绍</h2>
+                <p class="section-desc" data-zh="课题组致力于计算材料与凝聚态物理交叉研究" data-en="Our group explores computational materials and condensed matter physics">课题组致力于计算材料与凝聚态物理交叉研究</p>
+            </div>
+
+            <div class="team-grid" id="teamGrid">
+                <!-- 团队成员由 JavaScript 动态渲染 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ 联系方式 ═══ -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right">
+                    <h2 class="section-title" data-zh="联系方式" data-en="Contact">联系方式</h2>
+                    <p class="contact-desc" data-zh="课题组正在招聘博士后、博士/硕士研究生以及科研助理。欢迎通过邮件与罗伟老师联系，并附上个人简历、研究经历或成绩单，简要说明感兴趣的研究方向。" data-en="We are recruiting postdocs, PhD/Master's students, and a research assistant. Please contact Dr. Luo Wei by email with your CV, research experience or transcripts, and a brief note on your research interests.">课题组正在招聘博士后、博士/硕士研究生以及科研助理。欢迎通过邮件与罗伟老师联系，并附上个人简历、研究经历或成绩单，简要说明感兴趣的研究方向。</p>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <span class="contact-icon" aria-hidden="true">👤</span>
+                            <div>
+                                <h4 data-zh="联系人" data-en="Contact">联系人</h4>
+                                <p>Wei Luo / 罗伟</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon" aria-hidden="true">✉️</span>
+                            <div>
+                                <h4 data-zh="邮箱" data-en="Email">邮箱</h4>
+                                <p>luowei@suat-sz.edu.cn</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon" aria-hidden="true">📍</span>
+                            <div>
+                                <h4 data-zh="地址" data-en="Address">地址</h4>
+                                <p data-zh="广东省深圳市光明区新湖街道深圳理工大学材料学院" data-en="School of Materials, Shenzhen University of Advanced Technology, Guangming District, Shenzhen, Guangdong">广东省深圳市光明区新湖街道深圳理工大学材料学院</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-cta" data-aos="fade-left">
+                    <h3 data-zh="欢迎加入我们" data-en="Join Us">欢迎加入我们</h3>
+                    <p data-zh="如果您对计算材料、凝聚态物理、AI for Science、存储、能源或量子材料感兴趣，欢迎发送邮件咨询或申请。我们期待与您交流！" data-en="If you are interested in computational materials, condensed matter physics, AI for Science, storage, energy, or quantum materials, please reach out. We look forward to hearing from you!">如果您对计算材料、凝聚态物理、AI for Science、存储、能源或量子材料感兴趣，欢迎发送邮件咨询或申请。我们期待与您交流！</p>
+                    <a href="mailto:luowei@suat-sz.edu.cn" class="email-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                        <span data-zh="发送邮件" data-en="Send Email">发送邮件</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4 class="footer-column-title" data-zh="联系方式" data-en="Contact">联系方式</h4>
+                    <div class="footer-contact-info">
+                        <p><strong data-zh="电子邮件：" data-en="Email: ">电子邮件：</strong>luowei@suat-sz.edu.cn</p>
+                        <p><strong data-zh="地址：" data-en="Address: ">地址：</strong><span data-zh="广东省深圳市光明区新湖街道深圳理工大学材料科学与能源工程学院" data-en="School of Materials Science and Energy Engineering, Shenzhen University of Advanced Technology, Guangming District, Shenzhen">广东省深圳市光明区新湖街道深圳理工大学材料科学与能源工程学院</span></p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-column-title" data-zh="友情链接" data-en="Friendly Links">友情链接</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="https://www.suat-sz.edu.cn/" target="_blank" rel="noopener noreferrer" data-zh="深圳理工大学" data-en="Shenzhen University of Advanced Technology">深圳理工大学</a></li>
+                        <li><a href="https://msee.suat-sz.edu.cn/" target="_blank" rel="noopener noreferrer" data-zh="材料科学与能源工程学院" data-en="School of Materials Science and Energy Engineering">材料科学与能源工程学院</a></li>
+                        <li><a href="https://www.nsfc.gov.cn/" target="_blank" rel="noopener noreferrer" data-zh="国家自然科学基金委" data-en="National Natural Science Foundation">国家自然科学基金委</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-column-title" data-zh="常用链接" data-en="Useful Links">常用链接</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="https://www.nature.com/" target="_blank" rel="noopener noreferrer">Nature</a></li>
+                        <li><a href="https://pubs.acs.org/" target="_blank" rel="noopener noreferrer">ACS Publications</a></li>
+                        <li><a href="https://onlinelibrary.wiley.com/" target="_blank" rel="noopener noreferrer">Wiley Online Library</a></li>
+                        <li><a href="https://journals.aps.org/" target="_blank" rel="noopener noreferrer">Physical Review Journals</a></li>
+                        <li><a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-zh="Copyright © 2018 - 2026 深圳理工大学材料科学与能源工程学院 罗伟课题组 版权所有" data-en="Copyright © 2018 - 2026 Luo Wei Group, School of Materials Science and Energy Engineering, Shenzhen University of Advanced Technology. All Rights Reserved.">Copyright © 2018 - 2026 深圳理工大学材料科学与能源工程学院 罗伟课题组 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
