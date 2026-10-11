@@ -2306,11 +2306,11 @@ body[data-page="members"] .page-banner h1 { font-size: 28px; text-align: left; }
     body[data-page="members"] .page-banner h1 { font-size: 24px; }
 }
 
-/* 研究方向卡片：白底，交互时以紫色描边提示。 */
+/* 研究方向卡片：四张卡片统一浅灰外框，交互反馈保留在阴影与按钮上。 */
 .research-card.research-card-bg { background: #fff; }
 .research-card .research-card-overlay { display: none; }
 .research-card:hover, .research-card:focus-visible, .research-card:active {
-    background: #fff; border-color: var(--primary); transform: none;
+    background: #fff; border-color: var(--border); transform: none;
 }
 
 /* 导航采用柔和蓝色，保留白色文字的清晰对比。 */
