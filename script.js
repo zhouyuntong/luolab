@@ -93,7 +93,8 @@ const publicationsData = [
     "doi": "10.1103/PhysRevB.111.075407",
     "tags": [
       "ferroic",
-      "topological"
+      "topological",
+      "ai"
     ]
   },
   {
@@ -153,8 +154,40 @@ const publicationsData = [
     "year": 2025,
     "doi": "10.1002/adma.202507070",
     "tags": [
-      "ferroic"
+      "ferroic",
+      "ai"
     ]
+  },
+  {
+    "id": 13,
+    "titleZh": "Hidden integer quantum ferroelectricity in chiral tellurium",
+    "titleEn": "Hidden integer quantum ferroelectricity in chiral tellurium",
+    "authors": "W. Luo+, S. Deng+, M. Xie, J. Ji*, H. Xiang*, L. Bellaiche",
+    "journal": "Physical Review B",
+    "year": 2026,
+    "doi": "10.1103/qr2w-kfc6",
+    "tags": [
+      "ferroic",
+      "lowdimensional",
+      "ai"
+    ]
+  },
+  {
+    "id": 14,
+    "titleZh": "Unified definition of ferroelectricity",
+    "titleEn": "Unified definition of ferroelectricity",
+    "authors": "W. Luo, S. Deng, H. Xiang, L. Bellaiche",
+    "journal": "arXiv (preprint)",
+    "journalZh": "arXiv · 预印本",
+    "journalEn": "arXiv · Preprint",
+    "year": 2026,
+    "doi": "10.48550/arXiv.2605.14328",
+    "url": "https://arxiv.org/abs/2605.14328",
+    "tags": [
+      "ferroic",
+      "ai"
+    ],
+    "preprint": true
   }
 ];
 
@@ -222,7 +255,7 @@ function initFromURL() {
     const params = new URLSearchParams(window.location.search);
     const q = params.get('q') || '';
     const requestedFilter = params.get('filter');
-    const filter = ['all','ferroic','topological','fieldcontrol','lowdimensional'].includes(requestedFilter) ? requestedFilter : 'all';
+    const filter = ['all','ferroic','topological','fieldcontrol','lowdimensional','ai'].includes(requestedFilter) ? requestedFilter : 'all';
 
     if (q && searchInput) {
         currentSearch = q;
@@ -412,7 +445,7 @@ function initParticleCanvas() {
 function updateLanguage() {
     document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
     const english = currentLang === 'en';
-    const pageTitles = { index: ['罗伟课题组 | 深圳理工大学', 'Luo Wei Group | SUAT'], publications: ['研究成果 - 罗伟课题组', 'Publications - Luo Wei Group'], members: ['课题组成员 - 罗伟课题组', 'People - Luo Wei Group'] };
+    const pageTitles = { index: ['罗伟课题组 | 深圳理工大学', 'Luo Wei Group | SUAT'], publications: ['研究成果 - 罗伟课题组', 'Publications - Luo Wei Group'], members: ['课题组成员 - 罗伟课题组', 'People - Luo Wei Group'], news: ['课题组动态 - 罗伟课题组', 'Group Updates - Luo Wei Group'] };
     document.title = (pageTitles[document.body.dataset.page] || pageTitles.index)[english ? 1 : 0];
     const menuOpen = navLinks.classList.contains('active');
     mobileToggle.setAttribute('aria-label', english ? (menuOpen ? 'Close menu' : 'Open menu') : (menuOpen ? '关闭菜单' : '打开菜单'));
@@ -441,6 +474,7 @@ function updateLanguage() {
     renderPublications();
     renderTeam();
     renderMemberDirectory();
+    renderGroupNews();
 }
 
 function toggleLangMenu() {
@@ -512,10 +546,12 @@ function renderTeam() {
 // 论文检索功能
 // ═══════════════════════════════════════════════════
 function filterPublications() {
+    if (!publicationList) return;
     const query = currentSearch.toLowerCase().trim();
 
     filteredPublications = [...publicationsData].sort((a,b) => b.year - a.year || b.id - a.id).filter(pub => {
         // 分类筛选
+        if (isPreviewPage && pub.preprint) return false;
         if (currentFilter !== 'all' && !pub.tags.includes(currentFilter)) {
             return false;
         }
@@ -557,31 +593,34 @@ function renderPublications() {
 
     publicationList.innerHTML = visible.map((pub, index) => {
         const title = currentLang === 'zh' ? pub.titleZh : pub.titleEn;
+        const journal = currentLang === 'zh' ? (pub.journalZh || pub.journal) : (pub.journalEn || pub.journal);
+        const paperUrl = pub.url || `https://doi.org/${pub.doi}`;
         const tagsHtml = pub.tags.map(tag => {
             const tagNames = {
                 ferroic: { zh: '铁电多铁', en: 'Ferroic' },
                 topological: { zh: '拓扑电子态', en: 'Topological' },
                 fieldcontrol: { zh: '外场调控', en: 'Field Control' },
-                lowdimensional: { zh: '低维材料', en: 'Low-dimensional' }
+                lowdimensional: { zh: '低维材料', en: 'Low-dimensional' },
+                ai: { zh: 'AI 与材料设计', en: 'AI & Materials Design' }
             };
             const tagName = tagNames[tag] ? tagNames[tag][currentLang] : tag;
             return `<span class="pub-tag">${tagName}</span>`;
         }).join('');
 
         return `
-            <article class="publication-item" data-doi="${pub.doi}" data-aos="fade-up" data-aos-delay="${index % 3 * 100}">
+            <article class="publication-item" data-doi="${pub.doi}" data-url="${paperUrl}" data-aos="fade-up" data-aos-delay="${index % 3 * 100}">
                 <div class="pub-year">${pub.year}</div>
                 <div class="pub-content">
-                    <h3 class="pub-title"><a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+                    <h3 class="pub-title"><a href="${paperUrl}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
                     <div class="pub-meta">
                         <span>${pub.authors}</span>
-                        <span>${pub.journal}</span>
+                        <span>${journal}</span>
                         <span>${pub.year}</span>
                         <span>DOI: ${pub.doi}</span>
                     </div>
                     <div class="pub-tags">${tagsHtml}</div>
                 </div>
-                <a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener noreferrer" class="pub-link" aria-label="查看论文">
+                <a href="${paperUrl}" target="_blank" rel="noopener noreferrer" class="pub-link" aria-label="查看论文">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
                     </svg>
@@ -643,7 +682,7 @@ if (publicationList) {
         if (e.target.closest('a')) return;
         const item = e.target.closest('.publication-item');
         if (item && item.dataset.doi) {
-            window.open('https://doi.org/' + item.dataset.doi, '_blank', 'noopener');
+            window.open(item.dataset.url || ('https://doi.org/' + item.dataset.doi), '_blank', 'noopener');
         }
     });
 }
@@ -669,7 +708,7 @@ function initScrollEffects() {
             if (section.getBoundingClientRect().top <= navbar.offsetHeight + 80) current = section.id;
         }
         const destination = current === 'representative-publications' ? 'publications.html'
-            : current === 'team' ? 'members.html' : '#' + current;
+            : current === 'team' ? 'members.html' : current === 'news' ? 'news.html' : '#' + current;
         setCurrent(destination, 'location');
     }
     let pending = false;
@@ -830,7 +869,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && langDropdo
 const supervisedMembers = [
     { nameZh: '罗伟', nameEn: 'Wei Luo', initialsZh: '罗', initialsEn: 'WL', category: 'faculty', photo: 'wei-luo.jpg', roleZh: '导师 · 助理教授', roleEn: 'PI · Assistant Professor', profile: 'https://msee.suat-sz.edu.cn/info/1010/1382.htm' },
     { nameZh: '周运通', nameEn: 'Zhou Yuntong', initialsZh: '周', initialsEn: 'ZY', category: 'graduates', photo: 'zhou-yuntong.jpg', photoPosition: 'center 50%' },
-    { nameZh: '黄文烽', nameEn: 'Huang Wenfeng', initialsZh: '黄', initialsEn: 'HW', category: 'graduates' }
+    { nameZh: '黄文烽', nameEn: 'Huang Wenfeng', initialsZh: '黄', initialsEn: 'HW', category: 'graduates', photo: 'huang-wenfeng.jpg', photoPosition: 'center 20%' }
 ];
 const memberCategoryNames = {
     all: { zh: '全部成员', en: 'All Members' },
@@ -860,24 +899,50 @@ function renderMemberDirectory() {
     document.getElementById('directoryCrumb').textContent = title;
     document.getElementById('directoryCount').textContent = english
         ? `${members.length} ${members.length === 1 ? 'member' : 'members'}` : `共 ${members.length} 位成员`;
-    document.querySelectorAll('[data-member-category]').forEach(button => {
-        const key = button.dataset.memberCategory;
-        const active = key === memberCategory;
-        button.classList.toggle('active', active);
-        button.setAttribute('aria-pressed', String(active));
-        button.querySelector('.category-count').textContent = membersInCategory(key).length;
-    });
+    const categories = Object.entries(memberCategoryNames)
+        .map(([key, names]) => ({ key, names, count: membersInCategory(key).length }));
+    const sidebar = document.querySelector('.directory-categories');
+    const focusedCategory = sidebar.contains(document.activeElement)
+        ? document.activeElement.dataset.memberCategory : null;
+    sidebar.replaceChildren(...categories.map(category => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'directory-category';
+        button.dataset.memberCategory = category.key;
+        button.classList.toggle('active', category.key === memberCategory);
+        button.setAttribute('aria-pressed', String(category.key === memberCategory));
+        button.setAttribute('aria-controls', 'directoryResults');
+        const label = document.createElement('span');
+        label.className = 'category-label';
+        const arrow = document.createElement('span');
+        arrow.className = 'category-arrow';
+        arrow.setAttribute('aria-hidden', 'true');
+        arrow.textContent = '›';
+        const name = document.createElement('span');
+        name.textContent = category.names[currentLang];
+        label.append(arrow, name);
+        const count = document.createElement('span');
+        count.className = 'category-count';
+        count.setAttribute('aria-hidden', 'true');
+        count.textContent = category.count;
+        button.append(label, count);
+        return button;
+    }));
+    if (focusedCategory) {
+        sidebar.querySelector(`[data-member-category="${focusedCategory}"]`)?.focus();
+    }
     results.replaceChildren();
     if (!members.length) {
         const empty = document.createElement('div');
         empty.className = 'directory-empty';
-        const icon = document.createElement('span');
-        icon.className = 'directory-empty-symbol';
-        icon.setAttribute('aria-hidden', 'true');
-        icon.textContent = '—';
         const text = document.createElement('p');
-        text.textContent = english ? 'No member information available yet.' : '暂无成员信息';
-        empty.append(icon, text);
+        text.textContent = english ? 'Member information is being updated.' : '成员信息持续更新中';
+        const browse = document.createElement('button');
+        browse.type = 'button';
+        browse.className = 'directory-empty-action';
+        browse.dataset.memberCategory = 'all';
+        browse.textContent = english ? 'Browse all members →' : '浏览全部成员 →';
+        empty.append(text, browse);
         results.append(empty);
     } else {
         members.slice((memberPage - 1) * memberPageSize, memberPage * memberPageSize).forEach(member => {
@@ -940,12 +1005,12 @@ function renderMemberDirectory() {
             ? memberPage === 1 : memberPage === pageCount;
     });
 }
-document.querySelectorAll('[data-member-category]').forEach(button => {
-    button.addEventListener('click', () => {
-        memberCategory = button.dataset.memberCategory;
-        memberPage = 1;
-        renderMemberDirectory();
-    });
+document.getElementById('member-directory')?.addEventListener('click', event => {
+    const button = event.target.closest('button[data-member-category]');
+    if (!button || !memberCategoryNames[button.dataset.memberCategory]) return;
+    memberCategory = button.dataset.memberCategory;
+    memberPage = 1;
+    renderMemberDirectory();
 });
 document.querySelectorAll('[data-member-page]').forEach(button => {
     button.addEventListener('click', () => {
@@ -954,26 +1019,194 @@ document.querySelectorAll('[data-member-page]').forEach(button => {
         renderMemberDirectory();
     });
 });
+document.getElementById('directoryCrumb')?.addEventListener('click', () => {
+    memberPage = 1;
+    renderMemberDirectory();
+});
+
 document.getElementById('directoryPage')?.addEventListener('change', event => {
     memberPage = Number(event.target.value);
     renderMemberDirectory();
 });
 
-// 课题组动态：筛选已有真实动态，不生成占位新闻。
+// 首页与独立动态页共用数据、排序和筛选逻辑。
+const newsCategoryNames = {
+    all: { zh: '全部动态', en: 'All Updates' },
+    research: { zh: '科研进展', en: 'Research' },
+    group: { zh: '团队动态', en: 'Group News' },
+    academic: { zh: '学术交流', en: 'Academic Exchange' },
+    life: { zh: '组内生活', en: 'Group Life' }
+};
+const newsIsArchive = document.body.dataset.page === 'news';
+const newsParams = new URLSearchParams(window.location.search);
+let newsCategory = newsIsArchive && newsCategoryNames[newsParams.get('category')] ? newsParams.get('category') : 'all';
+let newsYear = newsIsArchive ? newsParams.get('year') || 'all' : 'all';
+let newsPage = newsIsArchive ? Math.max(1, Number.parseInt(newsParams.get('page'), 10) || 1) : 1;
+const newsArchivePageSize = 10;
+const newsPreviewSize = 5;
+
+function newsItems() {
+    return typeof groupNewsData === 'undefined' ? [] : groupNewsData;
+}
+function newsItemYear(item) { return item.date ? item.date.slice(0, 4) : 'undated'; }
+function newsYearLabel(year) {
+    if (year === 'all') return currentLang === 'en' ? 'All Years' : '全部年份';
+    if (year === 'undated') return currentLang === 'en' ? 'Year Not Specified' : '未注明年份';
+    return currentLang === 'en' ? year : `${year} 年`;
+}
+function selectNewsItems(preview = !newsIsArchive) {
+    const filtered = newsItems().filter(item =>
+        (newsCategory === 'all' || item.category === newsCategory) &&
+        (preview || newsYear === 'all' || newsItemYear(item) === newsYear)
+    ).sort((a, b) => {
+        // 未知日期保留原来的置顶位置，不虚构发布日期。
+        if (!a.date) return b.date ? -1 : 0;
+        if (!b.date) return 1;
+        return b.date.localeCompare(a.date);
+    });
+    const pageCount = Math.max(1, Math.ceil(filtered.length / newsArchivePageSize));
+    newsPage = Math.min(newsPage, pageCount);
+    const visible = preview ? filtered.slice(0, newsPreviewSize)
+        : filtered.slice((newsPage - 1) * newsArchivePageSize, newsPage * newsArchivePageSize);
+    return { filtered, visible, pageCount };
+}
+function createNewsItem(item) {
+    const article = document.createElement('article');
+    article.className = 'news-item';
+    article.dataset.newsCategory = item.category;
+    const date = document.createElement(item.date ? 'time' : 'div');
+    date.className = 'news-date';
+    if (item.date) date.dateTime = item.date;
+    const month = document.createElement('span');
+    month.className = 'news-day';
+    month.textContent = item.dateLabel[currentLang];
+    const year = document.createElement('span');
+    year.className = 'news-month';
+    year.textContent = item.date ? newsItemYear(item) : (currentLang === 'en' ? 'PROJECT UPDATE' : '项目动态');
+    date.append(month, year);
+    const content = document.createElement('div');
+    content.className = 'news-content';
+    const type = document.createElement('span');
+    type.className = 'news-type';
+    type.textContent = item.type[currentLang];
+    const title = document.createElement('h3');
+    title.textContent = item.title[currentLang];
+    const summary = document.createElement('p');
+    summary.textContent = item.summary[currentLang];
+    content.append(type, title, summary);
+    if (item.link) {
+        const link = document.createElement('a');
+        link.className = 'hero-intro-link';
+        link.href = item.link.url;
+        link.textContent = item.link.label[currentLang];
+        if (item.link.external) { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
+        content.append(link);
+    }
+    article.append(date, content);
+    return article;
+}
+function renderNewsYears() {
+    const sidebar = document.getElementById('newsYears');
+    if (!sidebar) return;
+    const years = [...new Set(newsItems().filter(item => item.date).map(newsItemYear))].sort((a,b) => b.localeCompare(a));
+    if (newsItems().some(item => !item.date)) years.push('undated');
+    if (newsYear !== 'all' && !years.includes(newsYear)) newsYear = 'all';
+    sidebar.replaceChildren();
+    ['all', ...years].forEach(year => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'directory-category';
+        button.dataset.newsYear = year;
+        button.classList.toggle('active', newsYear === year);
+        button.setAttribute('aria-pressed', String(newsYear === year));
+        button.setAttribute('aria-controls', 'groupNewsList');
+        const label = document.createElement('span');
+        label.className = 'category-label';
+        const arrow = document.createElement('span');
+        arrow.className = 'category-arrow'; arrow.textContent = '›'; arrow.setAttribute('aria-hidden','true');
+        const name = document.createElement('span');
+        name.textContent = newsYearLabel(year);
+        label.append(arrow,name);
+        const count = document.createElement('span');
+        count.className = 'category-count';
+        count.textContent = newsItems().filter(item => year === 'all' || newsItemYear(item) === year).length;
+        button.append(label,count);
+        sidebar.append(button);
+    });
+    document.getElementById('newsYearCrumb').textContent = newsYearLabel(newsYear);
+}
+function syncNewsURL() {
+    if (!newsIsArchive) return;
+    const params = new URLSearchParams(window.location.search);
+    [['year',newsYear,'all'],['category',newsCategory,'all'],['page',String(newsPage),'1']].forEach(([key,value,defaultValue]) => {
+        if (value === defaultValue) params.delete(key); else params.set(key,value);
+    });
+    const query = params.toString();
+    try { window.history.replaceState({}, '', window.location.pathname + (query ? '?' + query : '') + window.location.hash); } catch {}
+}
+function renderGroupNews() {
+    const list = document.getElementById('groupNewsList');
+    if (!list || typeof groupNewsData === 'undefined') return;
+    if (newsIsArchive) renderNewsYears();
+    const { filtered, visible, pageCount } = selectNewsItems();
+    document.querySelectorAll('[data-news-filter]').forEach(button => {
+        const active = button.dataset.newsFilter === newsCategory;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+    });
+    list.replaceChildren();
+    let lastYear = '';
+    visible.forEach(item => {
+        const year = newsItemYear(item);
+        if (newsIsArchive && year !== lastYear) {
+            const heading = document.createElement('h3');
+            heading.className = 'news-year-heading';
+            heading.textContent = newsYearLabel(year);
+            list.append(heading);
+            lastYear = year;
+        }
+        list.append(createNewsItem(item));
+    });
+    document.getElementById('groupNewsEmpty').hidden = visible.length > 0;
+    const moreLink = document.getElementById('viewAllNews');
+    if (moreLink) moreLink.href = newsCategory === 'all' ? 'news.html' : `news.html?category=${newsCategory}`;
+    if (!newsIsArchive) return;
+    document.getElementById('newsArchiveTitle').textContent = newsCategoryNames[newsCategory][currentLang];
+    document.getElementById('newsArchiveCount').textContent = currentLang === 'en' ? `${filtered.length} updates` : `共 ${filtered.length} 条动态`;
+    document.getElementById('newsPagination').hidden = pageCount <= 1;
+    document.getElementById('newsPageStatus').textContent = currentLang === 'en' ? `Page ${newsPage} of ${pageCount}` : `第 ${newsPage} / ${pageCount} 页`;
+    const select = document.getElementById('newsPage');
+    select.replaceChildren();
+    for (let page=1; page<=pageCount; page++) {
+        const option = document.createElement('option');
+        option.value = String(page); option.textContent = String(page); option.selected = page === newsPage;
+        select.append(option);
+    }
+    document.querySelector('[data-news-page="prev"]').disabled = newsPage === 1;
+    document.querySelector('[data-news-page="next"]').disabled = newsPage === pageCount;
+    syncNewsURL();
+}
 document.querySelectorAll('[data-news-filter]').forEach(button => {
     button.addEventListener('click', () => {
-        const category = button.dataset.newsFilter;
-        let count = 0;
-        document.querySelectorAll('[data-news-filter]').forEach(item => {
-            const active = item === button;
-            item.classList.toggle('active', active);
-            item.setAttribute('aria-pressed', String(active));
-        });
-        document.querySelectorAll('[data-news-category]').forEach(item => {
-            const visible = category === 'all' || item.dataset.newsCategory === category;
-            item.hidden = !visible;
-            if (visible) count++;
-        });
-        document.getElementById('groupNewsEmpty').hidden = count > 0;
+        newsCategory = button.dataset.newsFilter;
+        newsPage = 1;
+        renderGroupNews();
     });
+});
+document.getElementById('newsDirectory')?.addEventListener('click', event => {
+    const year = event.target.closest('[data-news-year]');
+    const page = event.target.closest('[data-news-page]');
+    if (year) { newsYear = year.dataset.newsYear; newsPage = 1; renderGroupNews(); }
+    if (page && !page.disabled) {
+        newsPage += page.dataset.newsPage === 'next' ? 1 : -1;
+        renderGroupNews();
+        document.getElementById('newsArchiveTitle').scrollIntoView({block:'start'});
+    }
+});
+document.getElementById('newsReset')?.addEventListener('click', () => {
+    newsYear = 'all'; newsCategory = 'all'; newsPage = 1; renderGroupNews();
+});
+document.getElementById('newsPage')?.addEventListener('change', event => {
+    newsPage = Number(event.target.value); renderGroupNews();
+    document.getElementById('newsArchiveTitle').scrollIntoView({block:'start'});
 });

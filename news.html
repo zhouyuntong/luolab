@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#73207c" />
+    <title>课题组动态 - 罗伟课题组</title>
+    <meta name="description" content="深圳理工大学材料学院罗伟课题组官方网站，聚焦铁电与多铁、拓扑量子材料、外场调控与 AI 驱动材料设计。" />
+    <link rel="icon" href="favicon.svg?v=suat" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css?v=20261011-blue-language" />
+<noscript><style>[data-aos]{opacity:1;transform:none}</style></noscript></head>
+<body data-page="news">
+    <a href="#main-content" class="skip-link">跳到主要内容</a>
+
+    <!-- ═══ 导航栏 ═══ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="https://msee.suat-sz.edu.cn/" target="_blank" rel="noopener noreferrer" class="logo-link" aria-label="材料科学与能源工程学院官网">
+                    <img src="logo.png" alt="材料科学与能源工程学院" class="logo-img" width="160" height="45" />
+                </a>
+                <a href="index.html#home" class="logo-text" data-zh="罗伟课题组" data-en="Luo Wei Group">罗伟课题组</a>
+            </div>
+            <div class="nav-links" id="navLinks"><a href="index.html#home" class="nav-item" data-zh="首页" data-en="Home">首页</a>
+<a href="publications.html" class="nav-item" data-zh="研究成果" data-en="Publications">研究成果</a>
+<a href="index.html#research" class="nav-item" data-zh="研究方向" data-en="Research">研究方向</a>
+<a href="members.html" class="nav-item" data-zh="课题组成员" data-en="People">课题组成员</a>
+<a href="news.html" class="nav-item active" aria-current="page" data-zh="课题组动态" data-en="Group Updates">课题组动态</a>
+<a href="index.html#join" class="nav-item" data-zh="招生与招聘" data-en="Join Us">招生与招聘</a>
+<a href="index.html#contact" class="nav-item" data-zh="联系方式" data-en="Contact">联系方式</a><div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-trigger" id="langTrigger" aria-label="切换语言" aria-expanded="false">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="currentColor" d="M27.85 29H30l-6-15h-2.35l-6 15h2.15l1.6-4h6.85zm-7.65-6 2.62-6.56L25.45 23zM18 7V5h-7V2H9v3H2v2h10.74a14.7 14.7 0 0 1-3.19 6.18A13.5 13.5 0 0 1 7.26 9h-2.1a16.5 16.5 0 0 0 3 5.58A16.8 16.8 0 0 1 3 18l.75 1.86A18.5 18.5 0 0 0 9.53 16a16.9 16.9 0 0 0 5.76 3.84L16 18a14.5 14.5 0 0 1-5.12-3.37A17.64 17.64 0 0 0 14.8 7z"/>
+                        </svg>
+                        <svg class="caret" viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="currentColor" d="M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z"/>
+                        </svg>
+                    </button>
+                    <div class="lang-menu" id="langMenu" role="menu">
+                        <button class="lang-option active" data-lang="zh" role="menuitem">简体中文</button>
+                        <button class="lang-option" data-lang="en" role="menuitem">English</button>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="打开菜单" aria-controls="navLinks" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main-content">
+    <section class="page-banner"><div class="container page-banner-inner"><h1 data-zh="课题组动态" data-en="Group Updates">课题组动态</h1></div></section>
+    <section class="section news-page"><div class="container"><div class="standalone-directory news-directory" id="newsDirectory">
+        <div class="directory-layout">
+            <aside class="directory-sidebar" aria-labelledby="newsYearHeading">
+                <h4 id="newsYearHeading" data-zh="按年份浏览" data-en="Browse by Year">按年份浏览</h4>
+                <div class="directory-categories" id="newsYears"></div>
+            </aside>
+            <div class="directory-main">
+                <nav class="directory-breadcrumb" aria-label="面包屑"><a href="index.html" data-zh="首页" data-en="Home">首页</a><span aria-hidden="true">/</span><a href="news.html" data-zh="课题组动态" data-en="Group Updates">课题组动态</a><span aria-hidden="true">/</span><button type="button" id="newsYearCrumb" data-news-year="all" aria-current="page" data-zh="全部年份" data-en="All Years">全部年份</button></nav>
+                <div class="news-archive-toolbar"><h2 id="newsArchiveTitle" data-zh="全部动态" data-en="All Updates">全部动态</h2><p id="newsArchiveCount" role="status" aria-live="polite">共 5 条动态</p></div>
+                <div class="news-filters" role="group" aria-label="动态分类"><button type="button" class="news-filter active" data-news-filter="all" aria-pressed="true" aria-controls="groupNewsList"><span data-zh="全部动态" data-en="All Updates">全部动态</span></button><button type="button" class="news-filter" data-news-filter="research" aria-pressed="false" aria-controls="groupNewsList"><span data-zh="科研进展" data-en="Research">科研进展</span></button><button type="button" class="news-filter" data-news-filter="group" aria-pressed="false" aria-controls="groupNewsList"><span data-zh="团队动态" data-en="Group News">团队动态</span></button><button type="button" class="news-filter" data-news-filter="academic" aria-pressed="false" aria-controls="groupNewsList"><span data-zh="学术交流" data-en="Academic Exchange">学术交流</span></button><button type="button" class="news-filter" data-news-filter="life" aria-pressed="false" aria-controls="groupNewsList"><span data-zh="组内生活" data-en="Group Life">组内生活</span></button></div>
+                <div id="groupNewsList" class="news-list" aria-labelledby="newsArchiveTitle"><article class="news-item" data-news-category="research"><div class="news-date"><span class="news-day" data-zh="获批" data-en="AWARDED">获批</span><span class="news-month" data-zh="项目动态" data-en="PROJECT UPDATE">项目动态</span></div><div class="news-content"><span class="news-type" data-zh="项目获批" data-en="Project Award">项目获批</span><h3 data-zh="参与的新一代人工智能国家科技重大专项项目获批" data-en="Project under the National Science and Technology Major Project for New-Generation Artificial Intelligence approved">参与的新一代人工智能国家科技重大专项项目获批</h3><p data-zh="课题组参与的新一代人工智能国家科技重大专项项目获批。罗伟老师作为研究骨干参与，负责经费60万元。" data-en="A project in which the group participates has been approved under the National Science and Technology Major Project for New-Generation Artificial Intelligence. Wei Luo participates as a key researcher and is responsible for RMB 600,000 in funding.">课题组参与的新一代人工智能国家科技重大专项项目获批。罗伟老师作为研究骨干参与，负责经费60万元。</p></div></article><article class="news-item" data-news-category="research"><div class="news-date"><span class="news-day" data-zh="10月" data-en="OCT">10月</span><span class="news-month">2026</span></div><div class="news-content"><span class="news-type" data-zh="科研进展" data-en="Research">科研进展</span><h3 data-zh="手性碲中的整数量子铁电性研究发表于 Physical Review B" data-en="Integer quantum ferroelectricity in chiral tellurium published in Physical Review B">手性碲中的整数量子铁电性研究发表于 Physical Review B</h3><p data-zh="论文于2026年10月发表，提出Ⅱ型整数量子铁电性，并揭示其在手性碲中的实现机制。罗伟老师为共同第一作者。" data-en="Published on October 2026, the paper proposes type-II integer quantum ferroelectricity and demonstrates its realization in chiral tellurium. Wei Luo is a co-first author.">论文于2026年10月发表，提出Ⅱ型整数量子铁电性，并揭示其在手性碲中的实现机制。罗伟老师为共同第一作者。</p><a href="https://journals.aps.org/prb/abstract/10.1103/qr2w-kfc6" target="_blank" rel="noopener noreferrer" class="hero-intro-link"><span data-zh="查看论文 ↗" data-en="Read the Paper ↗">查看论文 ↗</span></a></div></article><article class="news-item" data-news-category="group"><div class="news-date"><span class="news-day" data-zh="08月" data-en="AUG">08月</span><span class="news-month">2026</span></div><div class="news-content"><span class="news-type" data-zh="团队动态" data-en="Group News">团队动态</span><h3 data-zh="两位研究生加入课题组" data-en="Two graduate students join the group">两位研究生加入课题组</h3><p data-zh="2026年8月，研究生周运通、黄文烽加入课题组。欢迎两位同学！" data-en="Graduate students Zhou Yuntong and Huang Wenfeng joined the group in August 2026. Welcome to the group!">2026年8月，研究生周运通、黄文烽加入课题组。欢迎两位同学！</p><a href="members.html" class="hero-intro-link"><span data-zh="认识团队成员 →" data-en="Meet the Group →">认识团队成员 →</span></a></div></article><article class="news-item" data-news-category="group"><div class="news-date"><span class="news-day" data-zh="06月" data-en="JUN">06月</span><span class="news-month">2026</span></div><div class="news-content"><span class="news-type" data-zh="团队动态" data-en="Group News">团队动态</span><h3 data-zh="罗伟老师加入深圳理工大学" data-en="Wei Luo joins Shenzhen University of Advanced Technology">罗伟老师加入深圳理工大学</h3><p data-zh="罗伟老师于2026年6月入职深圳理工大学材料科学与能源工程学院，开展铁性与拓扑量子材料的理论研究。" data-en="Wei Luo joined the School of Materials Science and Energy Engineering at SUAT in June 2026 to pursue theoretical research on ferroic and topological quantum materials.">罗伟老师于2026年6月入职深圳理工大学材料科学与能源工程学院，开展铁性与拓扑量子材料的理论研究。</p><a href="https://msee.suat-sz.edu.cn/info/1010/1382.htm" target="_blank" rel="noopener noreferrer" class="hero-intro-link"><span data-zh="查看详情 ↗" data-en="Read More ↗">查看详情 ↗</span></a></div></article><article class="news-item" data-news-category="research"><div class="news-date"><span class="news-day" data-zh="03月" data-en="MAR">03月</span><span class="news-month" data-zh="2026" data-en="2026">2026</span></div><div class="news-content"><span class="news-type" data-zh="科研进展" data-en="Research">科研进展</span><h3 data-zh="BaTiS₃ 应变诱导旋光效应研究发表于 Physical Review B" data-en="Strain-induced gyrotropic effects in BaTiS₃ published in Physical Review B">BaTiS₃ 应变诱导旋光效应研究发表于 Physical Review B</h3><p data-zh="论文于 2026 年 3 月发表，并被选为 Editors’ Suggestion。" data-en="Published on March 2026 and selected as an Editors’ Suggestion.">论文于 2026 年 3 月发表，并被选为 Editors’ Suggestion。</p><a href="https://journals.aps.org/prb/abstract/10.1103/zk45-6lb2" target="_blank" rel="noopener noreferrer" class="hero-intro-link"><span data-zh="查看详情 ↗" data-en="Read More ↗">查看详情 ↗</span></a></div></article></div>
+                <div class="directory-empty news-archive-empty" id="groupNewsEmpty" role="status" hidden><p data-zh="暂无相关动态，后续更新将在这里发布。" data-en="No updates in this category yet. Future posts will appear here.">暂无相关动态，后续更新将在这里发布。</p><button type="button" class="directory-empty-action" id="newsReset" data-zh="浏览全部动态 →" data-en="Browse all updates →">浏览全部动态 →</button></div>
+                <div class="directory-pagination" id="newsPagination" hidden><p id="newsPageStatus"></p><div class="directory-page-controls"><button type="button" data-news-page="prev" data-zh="上一页" data-en="Previous">上一页</button><label class="sr-only" for="newsPage" data-zh="选择动态页码" data-en="Select update page">选择动态页码</label><select id="newsPage"></select><button type="button" data-news-page="next" data-zh="下一页" data-en="Next">下一页</button></div></div>
+                <noscript><p class="directory-noscript">启用 JavaScript 后可使用年份筛选、动态分类与分页。</p></noscript>
+            </div>
+        </div>
+    </div></div></section>
+</main>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4 class="footer-column-title" data-zh="联系方式" data-en="Contact">联系方式</h4>
+                    <div class="footer-contact-info">
+                        <p><strong data-zh="电子邮件：" data-en="Email: ">电子邮件：</strong>luowei@suat-sz.edu.cn</p>
+                        <p><strong data-zh="地址：" data-en="Address: ">地址：</strong><span data-zh="广东省深圳市光明区新湖街道北圳路深圳理工大学材料科学与能源工程学院 天权1-B" data-en="Tianquan 1-B, School of Materials Science and Energy Engineering, Shenzhen University of Advanced Technology, Beizhen Road, Xinhu Subdistrict, Guangming District, Shenzhen, Guangdong, China">广东省深圳市光明区新湖街道北圳路深圳理工大学材料科学与能源工程学院 天权1-B</span></p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-column-title" data-zh="友情链接" data-en="Friendly Links">友情链接</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="https://www.suat-sz.edu.cn/" target="_blank" rel="noopener noreferrer" data-zh="深圳理工大学" data-en="Shenzhen University of Advanced Technology">深圳理工大学</a></li>
+                        <li><a href="https://msee.suat-sz.edu.cn/" target="_blank" rel="noopener noreferrer" data-zh="材料科学与能源工程学院" data-en="School of Materials Science and Energy Engineering">材料科学与能源工程学院</a></li>
+                        <li><a href="https://www.nsfc.gov.cn/" target="_blank" rel="noopener noreferrer" data-zh="国家自然科学基金委" data-en="National Natural Science Foundation">国家自然科学基金委</a></li>
+                        <li><a href="https://ccmp.uark.edu/" target="_blank" rel="noopener noreferrer" data-zh="Bellaiche 课题组(阿肯色大学)" data-en="Bellaiche Group (Univ. of Arkansas)">Bellaiche 课题组(阿肯色大学)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-column-title" data-zh="常用链接" data-en="Useful Links">常用链接</h4>
+                    <ul class="footer-link-list">
+                        <li><a href="https://www.nature.com/" target="_blank" rel="noopener noreferrer">Nature</a></li>
+                        <li><a href="https://pubs.acs.org/" target="_blank" rel="noopener noreferrer">ACS Publications</a></li>
+                        <li><a href="https://onlinelibrary.wiley.com/" target="_blank" rel="noopener noreferrer">Wiley Online Library</a></li>
+                        <li><a href="https://journals.aps.org/" target="_blank" rel="noopener noreferrer">Physical Review Journals</a></li>
+                        <li><a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-zh="Copyright © 2026 深圳理工大学材料科学与能源工程学院 罗伟课题组 版权所有" data-en="Copyright © 2026 Luo Wei Group, School of Materials Science and Energy Engineering, Shenzhen University of Advanced Technology. All Rights Reserved.">Copyright © 2026 深圳理工大学材料科学与能源工程学院 罗伟课题组 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="news-data.js?v=20261011-award-august"></script>
+    <script src="script.js?v=20261011-huang-avatar"></script>
+</body>
+</html>
