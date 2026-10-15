@@ -868,8 +868,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && langDropdo
 // 学生与青年研究人员：新增成员时在此维护姓名和分类，不填写尚未确认的学位或年级。
 const supervisedMembers = [
     { nameZh: '罗伟', nameEn: 'Wei Luo', initialsZh: '罗', initialsEn: 'WL', category: 'faculty', photo: 'wei-luo.jpg', roleZh: '导师 · 助理教授', roleEn: 'PI · Assistant Professor', profile: 'https://msee.suat-sz.edu.cn/info/1010/1382.htm' },
-    { nameZh: '周运通', nameEn: 'Zhou Yuntong', initialsZh: '周', initialsEn: 'ZY', category: 'graduates', photo: 'zhou-yuntong.jpg', photoPosition: 'center 50%' },
-    { nameZh: '黄文烽', nameEn: 'Huang Wenfeng', initialsZh: '黄', initialsEn: 'HW', category: 'graduates', photo: 'huang-wenfeng.jpg', photoPosition: 'center 20%' }
+    { nameZh: '周运通', nameEn: 'Zhou Yuntong', initialsZh: '周', initialsEn: 'ZY', category: 'graduates', roleZh: '2026级研究生', roleEn: 'Graduate Student · 2026 Entry', photo: 'zhou-yuntong.jpg', photoPosition: 'center 50%' },
+    { nameZh: '黄文烽', nameEn: 'Huang Wenfeng', initialsZh: '黄', initialsEn: 'HW', category: 'graduates', roleZh: '2026级研究生', roleEn: 'Graduate Student · 2026 Entry', photo: 'huang-wenfeng.jpg', photoPosition: 'center 20%' }
 ];
 const memberCategoryNames = {
     all: { zh: '全部成员', en: 'All Members' },
